@@ -14,18 +14,19 @@ Identificar clientes com maior probabilidade de cancelamento, permitindo que a e
 - Conversão de variáveis categóricas
 - Separação entre treino e teste com estratificação
 - Treinamento de modelo de Regressão Logística
-- Normalização dos dados com StandardScaler
-- Avaliação com métricas de classificação
 - Ajuste de threshold para melhorar o recall
+- Treinamento de modelo Random Forest
+- Comparação entre modelos
 - Análise da matriz de confusão
 
-## Modelo utilizado
+## Modelos utilizados
 
 - Logistic Regression
+- Random Forest
 
-## Métricas principais
+## Resultados dos modelos
 
-Modelo inicial com threshold 0.5:
+### Logistic Regression - Threshold 0.5
 
 - Accuracy: 0.83
 - Precision: 0.65
@@ -33,29 +34,46 @@ Modelo inicial com threshold 0.5:
 - F1-score: 0.61
 - ROC-AUC: 0.83
 
-Após ajuste de threshold para 0.3:
+### Logistic Regression - Threshold 0.3
 
 - Precision: 0.51
 - Recall: 0.76
 - F1-score: 0.61
 
-## Comparação da matriz de confusão
+### Random Forest
 
-Threshold 0.5:
+- Accuracy: 0.79
+- Precision: 0.63
+- Recall: 0.49
+- F1-score: 0.55
+- ROC-AUC: 0.82
+
+## Comparação das matrizes de confusão
+
+### Logistic Regression - Threshold 0.5
 
 - Falsos negativos: 159
 - Verdadeiros positivos: 215
 
-Threshold 0.3:
+### Logistic Regression - Threshold 0.3
 
 - Falsos negativos: 90
 - Verdadeiros positivos: 284
 
+### Random Forest
+
+- Falsos negativos: 190
+- Verdadeiros positivos: 184
+
 ## Conclusão
 
-Ao reduzir o threshold de 0.5 para 0.3, o modelo aumentou o recall e passou a identificar mais clientes com risco de churn.
+Neste projeto, o principal objetivo era identificar clientes com maior risco de churn.
 
-Essa escolha pode ser interessante em um cenário de negócio onde perder clientes é mais caro do que abordar clientes que talvez não cancelariam.
+A Regressão Logística com threshold ajustado para 0.3 apresentou o melhor recall, identificando mais clientes com risco de cancelamento.
+
+O Random Forest foi testado como comparação, mas neste primeiro experimento teve recall menor e deixou passar mais clientes que realmente cancelaram.
+
+Por isso, considerando o objetivo de negócio, a melhor opção até o momento foi a Regressão Logística com threshold 0.3.
 
 ## Ferramentas utilizadas
 
